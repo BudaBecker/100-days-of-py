@@ -19,13 +19,23 @@ a8"     "" 88 88P'    "8a 88P'    "8a a8P_____88 88P'   "Y8
               88           
 '''
 
-#TODO: encode and decode functions.
-
 def encode(message: str, shift: int) -> str:
-    return "encoded str"
+    encoded_message = ''
+    for letters in message:
+        if (ord(letters)+shift > 122):
+            encoded_message += chr(ord(letters)+shift-26)
+        else:
+            encoded_message += chr(ord(letters)+shift)
+    return encoded_message
 
 def decode(message: str, shift: int) -> str:
-    return "decoded str"
+    decoded_message = ''
+    for letters in message:
+        if (ord(letters)-shift < 97):
+            decoded_message += chr(ord(letters)-shift+26)
+        else:
+            decoded_message += chr(ord(letters)-shift)
+    return decoded_message
 
 def game():
     method = input("Type 'encode' to encrypt, type 'decode' to decrypt:\n").lower()
