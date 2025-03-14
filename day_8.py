@@ -21,7 +21,12 @@ a8"     "" 88 88P'    "8a 88P'    "8a a8P_____88 88P'   "Y8
 
 def encode(message: str, shift: int) -> str:
     encoded_message = ''
+    if shift > 26:
+        shift %= 26
     for letters in message:
+        if ord(letters) < 97 or ord(letters) > 122:
+            encoded_message += letters
+            continue
         if (ord(letters)+shift > 122):
             encoded_message += chr(ord(letters)+shift-26)
         else:
@@ -30,7 +35,12 @@ def encode(message: str, shift: int) -> str:
 
 def decode(message: str, shift: int) -> str:
     decoded_message = ''
+    if shift > 26:
+        shift %= 26
     for letters in message:
+        if ord(letters) < 97 or ord(letters) > 122:
+            decoded_message += letters
+            continue
         if (ord(letters)-shift < 97):
             decoded_message += chr(ord(letters)-shift+26)
         else:
