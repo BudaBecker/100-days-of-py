@@ -1,0 +1,1 @@
+words = ["floresta", "apartamento", "casa"]
