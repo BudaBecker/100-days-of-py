@@ -89,13 +89,10 @@ while (on):
     
     elif promt_user == "report":
         print("\nResources:")
-        for ingredientes in resources:
-            if ingredientes == "coffee":
-                print(f"{ingredientes}: {resources[ingredientes]}g")
-            elif ingredientes == "money":
-                print(f"{ingredientes}: ${resources[ingredientes]}")
-            else:
-                print(f"{ingredientes}: {resources[ingredientes]}ml")
+        print(f"Water: {resources["water"]}ml")
+        print(f"Milk: {resources["milk"]}ml")
+        print(f"Coffee: {resources["coffee"]}g")
+        print(f"Money: ${resources["money"]}")
 
     elif promt_user == "refill":
         resources["water"] = 300
