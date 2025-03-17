@@ -75,7 +75,7 @@ def change_resources(drink: str) -> dict:
 
 on = True
 while (on):
-    promt_user = input("What would you like? (espresso/latte/cappuccino): ")
+    promt_user = input("What would you like? (espresso/latte/cappuccino): ").lower()
     if promt_user in MENU.keys():
         if check_resources(promt_user):
             if payment(promt_user):
