@@ -55,12 +55,11 @@ def payment(drink: str) -> bool:
     print(f"Please insert coins. (${MENU[drink]["cost"]})")
     for coin_keys in coins:
         money_paid += int(input(f"How many {coin_keys} (${coins[coin_keys]})?: ")) * coins[coin_keys]
-        round(money_paid, 2)
     if money_paid == MENU[drink]["cost"]:
         print("Exact price, no change needed!")
         return True
     elif money_paid > MENU[drink]["cost"]:
-        print(f"Here is ${money_paid-MENU[drink]["cost"]} in change.")
+        print(f"Here is ${round(money_paid-MENU[drink]["cost"], 2)} in change.")
         return True
     else:
         print("Sorry that's not enought money. Money refunded.")
