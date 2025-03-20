@@ -1,4 +1,4 @@
-import turtle
+import turtle, time
 
 STARTING_POS = [(0,0), (-20,0), (-40,0)]
 MOVE_DISTANCE = 20
@@ -31,6 +31,12 @@ class Snake():
             new_segment.penup()
             new_segment.goto(position)
             self.segments.append(new_segment)
+    
+    def snake_game_over(self, screen):
+        for segment in self.segments:
+            segment.ht()
+            screen.update()
+            time.sleep(0.25)
     
     def extend(self):
         self.add_segment(self.segments[-1].position())
