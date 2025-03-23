@@ -35,7 +35,7 @@ while True:
         screen.update()
         scoreboard.game_over()
         snake.snake_game_over(screen=screen)
-        if screen.textinput(title="GAME OVER", prompt="Do you want to keep playing? (yes/no)").lower() != "yes":
+        if screen.textinput(title="GAME OVER", prompt="type 'yes' to play again.").lower() != "yes":
                 break
         else:
             scoreboard.reset_score()
