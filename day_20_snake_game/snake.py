@@ -13,6 +13,11 @@ class Snake():
         self.segments = []
         self.create_snake()
         self.head = self.segments[0]
+    
+    def reset_snake(self):
+        self.segments.clear()
+        self.create_snake()
+        self.head = self.segments[0]
         
     def create_snake(self): 
         for positions in STARTING_POS:
@@ -35,8 +40,9 @@ class Snake():
     def snake_game_over(self, screen):
         for segment in self.segments:
             segment.ht()
+            segment.goto(1000,1000)
             screen.update()
-            time.sleep(0.25)
+            time.sleep(0.25)  
     
     def extend(self):
         self.add_segment(self.segments[-1].position())

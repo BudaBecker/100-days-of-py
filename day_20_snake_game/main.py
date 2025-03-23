@@ -21,8 +21,7 @@ screen.onkey(snake.down, "Down")
 screen.onkey(snake.left, "Left")
 screen.onkey(snake.right, "Right")
 
-game_is_on = True
-while game_is_on:
+while True:
     screen.update()
     time.sleep(difficulty)
     snake.move()
@@ -33,16 +32,27 @@ while game_is_on:
         snake.extend()
     
     if snake.head.xcor() < -290 or snake.head.xcor() > 290 or snake.head.ycor() < -290 or snake.head.ycor() > 290:
-        game_is_on = False
         screen.update()
         scoreboard.game_over()
         snake.snake_game_over(screen=screen)
-        
+        if screen.textinput(title="GAME OVER", prompt="Do you want to keep playing? (yes/no)").lower() != "yes":
+                break
+        else:
+            scoreboard.reset_score()
+            snake.reset_snake()
+            screen.listen()
+                
     for segment in snake.segments[1:]:
         if snake.head.distance(segment) < 10:
-            game_is_on = False
             screen.update()
             scoreboard.game_over()
             snake.snake_game_over(screen=screen)
+            if screen.textinput(title="GAME OVER", prompt="Do you want to keep playing? (yes/no)").lower() != "yes":
+                break
+            else:
+                scoreboard.reset_score()
+                snake.reset_snake()
+                screen.listen()
+            
     
 screen.exitonclick()
