@@ -1,3 +1,5 @@
+import html
+
 class QuizBrain:
     
     def __init__(self, question_bank: list) -> None:
@@ -8,7 +10,8 @@ class QuizBrain:
     def next_question(self) -> None:
         question = self.q_list[self.q_number]
         self.q_number += 1
-        user_answer = input(f"Q.{self.q_number}: {question.text} (True/False)? ")
+        q_text = html.unescape(question.text)
+        user_answer = input(f"Q.{self.q_number}: {q_text} (True/False)? ")
         self.check_answer(user_answer, question.answer)
         
     def still_has_questions(self) -> bool:
