@@ -13,7 +13,7 @@ msg = "MSG HERE :)"
 message = client.messages.create(
   from_='whatsapp:+14155238886',
   body=msg,
-  to='whatsapp:' + my_number
+  to=f'whatsapp:{my_number}'
 )
 
 print(message.sid)
