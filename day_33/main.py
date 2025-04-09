@@ -1,8 +1,11 @@
 import requests
+import os
+from dotenv import load_dotenv
 import datetime as dt
 
-MY_LAT = -15.794473
-MY_LONG = -47.882519
+load_dotenv("./.venv/.env")
+MY_LAT = float(os.getenv("MY_LAT"))
+MY_LONG = float(os.getenv("MY_LONG"))
 
 def check_if_day(current_time: str, sunrise: str, sunset: str) -> bool:
     try:
